@@ -4,7 +4,6 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-import ConfirmModal from "@components/ConfirmModal";
 import { ModalContext } from "../app/ModalContext";
 
 const EmployeeCard = ({ employees }) => {

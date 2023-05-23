@@ -2,7 +2,7 @@
 
 import { createContext, useState } from "react";
 import ReactDOM from "react-dom";
-import ConfirmModal from "@components/ConfirmModal";
+import ConfirmModal from "@components/confirmModal";
 
 const ModalContext = createContext();
 

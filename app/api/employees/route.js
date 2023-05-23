@@ -1,7 +1,12 @@
 import { connectToDB } from "@utils/database";
 import Employee from "@models/employee";
 
-export const GET = async (request) => {
+export default async function handler(req, res) {
+  if (req.method !== "GET") {
+    res.status(400).send({ message: "Only GET requests allowed" });
+    return;
+  }
+
   try {
     await connectToDB();
 
@@ -9,9 +14,9 @@ export const GET = async (request) => {
       .populate("creator")
       .populate("requests");
 
-    return new Response(JSON.stringify(employees), { status: 200 });
+    res.status(200).json(employees);
   } catch (error) {
     console.error(error);
-    return new Response("Failed to fetch all employees!", { status: 500 });
+    res.status(500).send({ message: "Failed to fetch all employees!" });
   }
-};
+}

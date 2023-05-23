@@ -197,7 +197,7 @@
 }
 
 .details_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-orange-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter w-[450px]  h-fit shadow-lg mb-5;
+  @apply flex-1 break-inside-avoid rounded-lg border border-orange-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter w-[400px]  h-fit shadow-lg mb-5;
 }
 .request_card {
   @apply flex-1 break-inside-avoid rounded-lg border  bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter w-[300px] h-fit  shadow-lg;

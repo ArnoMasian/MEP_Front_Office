@@ -1,19 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 const Home = () => {
-  const [employeesOnLeave, setEmployeesOnLeave] = useState([]);
+  // const [employeesOnLeave, setEmployeesOnLeave] = useState([]);
 
-  useEffect(() => {
-    const fetchOnLeave = async () => {
-      const response = await fetch("/api/onLeave");
-      const data = await response.json();
-      setEmployeesOnLeave(data);
-    };
+  // useEffect(() => {
+  //   const fetchOnLeave = async () => {
+  //     const response = await fetch("/api/onLeave");
+  //     const data = await response.json();
+  //     setEmployeesOnLeave(data);
+  //   };
 
-    fetchOnLeave();
-  }, []);
+  //   fetchOnLeave();
+  // }, []);
 
   return (
     <section className="w-full h-screen flex flex-col">
@@ -21,7 +21,7 @@ const Home = () => {
         MEP FRONT OFFICE
       </h1>
 
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <div className="w-full max-w-screen-lg bg-white rounded-xl shadow-lg p-5 mt-5 border-2 border-blue-200">
           <h2 className="text-3xl font-bold mb-4 text-center blue_gradient font-satoshi">
             Employees on Leave
@@ -76,7 +76,7 @@ const Home = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

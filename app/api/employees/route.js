@@ -1,22 +1,16 @@
 import { connectToDB } from "@utils/database";
 import Employee from "@models/employee";
 
-export default async function handler(req, res) {
-  if (req.method !== "GET") {
-    res.status(400).send({ message: "Only GET requests allowed" });
-    return;
-  }
-
+export const GET = async (request) => {
   try {
     await connectToDB();
 
-    const employees = await Employee.find({})
-      .populate("creator")
-      .populate("requests");
+    const employees = await Employee.find({}).populate("creator");
+    // .populate("requests");
 
-    res.status(200).json(employees);
+    return new Response(JSON.stringify(employees), { status: 200 });
   } catch (error) {
     console.error(error);
-    res.status(500).send({ message: "Failed to fetch all employees!" });
+    return new Response("Failed to fetch all employees!", { status: 500 });
   }
-}
+};

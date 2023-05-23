@@ -88,21 +88,7 @@ const Feed = () => {
       </div>
 
       <section className="feed">
-        {loading ? (
-          <div className={classes.customLoader}>
-            <div className={classes.customLoader__do}></div>
-            <div className={classes.customLoader__dot}></div>
-            <div className={classes.customLoader__dot}></div>
-            <div className={classes.customLoader__dot}></div>
-            <div className={classes.customLoader__dot}></div>
-            <div className={classes.customLoader__dot}></div>
-            <div className={classes.customLoader__dot}></div>
-            <div className={classes.customLoader__dot}></div>
-            <div className={classes.customLoader__dot}></div>
-          </div>
-        ) : (
-          <EmployeeCardList data={filteredEmployees} />
-        )}
+        <EmployeeCardList data={filteredEmployees} />
       </section>
     </>
   );

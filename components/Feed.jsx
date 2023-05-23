@@ -45,8 +45,8 @@ const Feed = () => {
   );
 
   return (
-    <section className="feed">
-      {/* <div className="w-full sm:max-w-md mx-auto p-6 space-y-8">
+    <>
+      <div className="w-full sm:max-w-md mx-auto p-6 space-y-8">
         <div className="relative">
           <input
             type="text"
@@ -85,24 +85,26 @@ const Feed = () => {
             </option>
           </select>
         </div>
-      </div> */}
+      </div>
 
-      {loading ? (
-        <div className={classes.customLoader}>
-          <div className={classes.customLoader__do}></div>
-          <div className={classes.customLoader__dot}></div>
-          <div className={classes.customLoader__dot}></div>
-          <div className={classes.customLoader__dot}></div>
-          <div className={classes.customLoader__dot}></div>
-          <div className={classes.customLoader__dot}></div>
-          <div className={classes.customLoader__dot}></div>
-          <div className={classes.customLoader__dot}></div>
-          <div className={classes.customLoader__dot}></div>
-        </div>
-      ) : (
-        <EmployeeCardList data={allEmployees} />
-      )}
-    </section>
+      <section className="feed">
+        {loading ? (
+          <div className={classes.customLoader}>
+            <div className={classes.customLoader__do}></div>
+            <div className={classes.customLoader__dot}></div>
+            <div className={classes.customLoader__dot}></div>
+            <div className={classes.customLoader__dot}></div>
+            <div className={classes.customLoader__dot}></div>
+            <div className={classes.customLoader__dot}></div>
+            <div className={classes.customLoader__dot}></div>
+            <div className={classes.customLoader__dot}></div>
+            <div className={classes.customLoader__dot}></div>
+          </div>
+        ) : (
+          <EmployeeCardList data={filteredEmployees} />
+        )}
+      </section>
+    </>
   );
 };
 

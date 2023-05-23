@@ -101,7 +101,7 @@ const Feed = () => {
             <div className={classes.customLoader__dot}></div>
           </div>
         ) : (
-          <EmployeeCardList data={filteredEmployees} />
+          <EmployeeCardList data={allEmployees} />
         )}
       </section>
     </>

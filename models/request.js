@@ -1,5 +1,7 @@
 import { Schema, model, models } from "mongoose";
 
+import Employee from "./employee";
+
 const RequestSchema = new Schema({
   employee: {
     type: Schema.Types.ObjectId,
@@ -56,7 +58,6 @@ const RequestSchema = new Schema({
   },
 });
 
-// const Request = models.Request || model("Request", RequestSchema);
-const Request = model("Request", RequestSchema);
+const Request = models.Request || model("Request", RequestSchema);
 
 export default Request;

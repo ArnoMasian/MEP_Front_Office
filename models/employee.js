@@ -1,5 +1,7 @@
 import { Schema, model, models } from "mongoose";
 
+import Request from "./request";
+
 const EmployeeSchema = new Schema({
   creator: {
     type: Schema.Types.ObjectId,

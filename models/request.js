@@ -56,6 +56,7 @@ const RequestSchema = new Schema({
   },
 });
 
-const Request = models.Request || model("Request", RequestSchema);
+// const Request = models.Request || model("Request", RequestSchema);
+const Request = model("Request", RequestSchema);
 
 export default Request;

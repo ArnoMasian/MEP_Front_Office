@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 const Home = () => {
   const [employeesOnLeave, setEmployeesOnLeave] = useState([]);
 
+  const [allEmployees, setAllEmployees] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchOnLeave = async () => {
       const response = await fetch("/api/onLeave");
@@ -15,11 +18,45 @@ const Home = () => {
     fetchOnLeave();
   }, []);
 
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      const response = await fetch("/api/employees");
+      const data = await response.json();
+
+      setAllEmployees(data);
+      setLoading(false);
+    };
+
+    fetchEmployees();
+  }, []);
+
   return (
     <section className="w-full h-screen flex flex-col">
       <h1 className="head_text text-center orange_gradient mb-10">
         MEP FRONT OFFICE
       </h1>
+
+      <div className="feed">
+        <div className="flex overflow-x-auto pb-2 ">
+          <ul className="flex flex-no-wrap justify-start">
+            {allEmployees.map((employee) => {
+              return (
+                <li
+                  key={employee._id}
+                  className="p-4 m-2 bg-white rounded shadow-lg w-60 glassmorphism border-blue-400 border-2"
+                >
+                  <h2 className="font-bold text-xl mb-2 text-center font-satoshi text-blue-600">
+                    {employee.name}
+                  </h2>
+                  <p className="text-gray-700 mb-2 text-center font-satoshi">
+                    {employee.designation}
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
 
       <div className="flex justify-center">
         <div className="w-full max-w-screen-lg bg-white rounded-xl shadow-lg p-5 mt-5 border-2 border-blue-200">

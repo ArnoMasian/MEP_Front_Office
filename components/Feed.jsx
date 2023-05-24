@@ -104,8 +104,7 @@ const Feed = () => {
           <EmployeeCardList data={filteredEmployees} />
         ) : (
           <p className="font-satoshi text-gray-400">
-            No employees available. Click the Add Employee button to add a new
-            employee.
+            No employees available. Login to add a new employee.
           </p>
         )}
       </section>

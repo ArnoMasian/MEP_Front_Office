@@ -8,8 +8,8 @@ import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 
 export const metadata = {
-  title: "MEP Dashboard",
-  description: "Manage employees conveniently",
+  title: "MEP Front Office",
+  description: "Manage Your Employees Conveniently",
 };
 
 const RootLayout = ({ children }) => {

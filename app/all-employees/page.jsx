@@ -13,7 +13,7 @@ const AllEmployees = () => {
     <div>
       <div className="flex flex-center gap-3 md:gap-5">
         {session?.user ? (
-          <Link href="/all-employees/add-employee" className="black_btn">
+          <Link href="/all-employees/add-employee" className="blue_btn">
             Add employee
           </Link>
         ) : (

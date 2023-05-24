@@ -25,37 +25,22 @@ const Nav = () => {
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
-      <div className="flex gap-2 flex-center">
-        <Link href="/" className="flex gap-2 flex-center ">
-          <Image
-            src={
-              isHomeButtonHovered ? homeHoverImage : "/assets/icons/home.png"
-            }
-            alt="Mep Logo"
-            width={40}
-            height={40}
-            className="sm:hidden"
-            onMouseEnter={() => setIsHomeButtonHovered(true)}
-            onMouseLeave={() => setIsHomeButtonHovered(false)}
-          />
-          <p className="logo_text main_btn">Home</p>
+      <div className="flex gap-2 flex-center ">
+        <Link href="/" className="main_btn">
+          Home
         </Link>
 
-        <Link href="/all-employees" className="main_btn">
+        <Link href="/all-employees" className="main_btn ">
           All Employees
         </Link>
       </div>
 
       {/* Desktop Navigation */}
-      <div className="sm:flex hidden">
-        <div className="flex gap-3 md:gap-5">
-          {/* <Link href="/request" className="black_btn mr-5">
-            Request
-          </Link> */}
-        </div>
+      <div className="flex">
+        <div className="flex gap-3 md:gap-5"></div>
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <button type="button" onClick={signOut} className="outline_btn">
+            <button type="button" onClick={signOut} className="main_btn">
               Logout
             </button>
 
@@ -88,14 +73,14 @@ const Nav = () => {
 
       {/* Mobile Navigation */}
 
-      <div className="sm:hidden flex relative z-10">
+      {/* <div className="sm:hidden flex relative z-10">
         {session?.user ? (
           <div className="flex">
             <Image
               src={session?.user.image}
-              width={37}
-              height={37}
-              className="rounded-full"
+              width={40}
+              height={40}
+              className="rounded-full cursor-pointer"
               alt="profile"
               onClick={() => setToggleDropdown((prev) => !prev)}
             />
@@ -117,21 +102,13 @@ const Nav = () => {
                   All Employees
                 </Link>
 
-                {/* <Link
-                  href="/request"
-                  className="dropdown_link outline_btn"
-                  onClick={() => setToggleDropdown(false)}
-                >
-                  Request
-                </Link> */}
-
                 <button
                   type="button"
                   onClick={() => {
                     setToggleDropdown(false);
                     signOut();
                   }}
-                  className="mt-5 w-full black_btn"
+                  className="w-full black_btn mt-5"
                 >
                   Logout
                 </button>
@@ -153,7 +130,7 @@ const Nav = () => {
               ))}
           </>
         )}
-      </div>
+      </div> */}
     </nav>
   );
 };

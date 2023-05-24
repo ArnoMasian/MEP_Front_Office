@@ -1,6 +1,10 @@
 import Link from "next/link";
 
+import { useContext } from "react";
+
 import classes from "@styles/loader.module.css";
+
+import { ModalContext } from "@app/ModalContext";
 
 const RequestForm = ({
   type,
@@ -11,9 +15,11 @@ const RequestForm = ({
   submitting,
   handleSubmit,
 }) => {
+  const { handleModalOpen } = useContext(ModalContext);
+
   return (
     <section className="w-full max-w-full flex-center flex-col">
-      <h1 className="head_text text-left">
+      <h1 className="head_text2 text-left">
         {" "}
         <span className="blue_gradient">{type} for Leave</span>{" "}
       </h1>

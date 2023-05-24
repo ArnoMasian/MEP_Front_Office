@@ -7,6 +7,8 @@ import { ModalProvider } from "./ModalContext";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 
+import Head from "next/head";
+
 export const metadata = {
   title: "MEP Front Office",
   description: "Manage Your Employees Conveniently",

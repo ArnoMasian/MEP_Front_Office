@@ -100,8 +100,13 @@ const Feed = () => {
             <div className={classes.customLoader__dot}></div>
             <div className={classes.customLoader__dot}></div>
           </div>
-        ) : (
+        ) : filteredEmployees.length > 0 ? (
           <EmployeeCardList data={filteredEmployees} />
+        ) : (
+          <p className="font-satoshi text-gray-400">
+            No employees available. Click the Add Employee button to add a new
+            employee.
+          </p>
         )}
       </section>
     </>

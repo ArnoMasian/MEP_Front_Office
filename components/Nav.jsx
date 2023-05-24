@@ -36,7 +36,7 @@ const Nav = () => {
       </div>
 
       {/* Desktop Navigation */}
-      <div className="flex">
+      <div className="sm:flex hidden">
         <div className="flex gap-3 md:gap-5"></div>
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
@@ -73,7 +73,7 @@ const Nav = () => {
 
       {/* Mobile Navigation */}
 
-      {/* <div className="sm:hidden flex relative z-10">
+      <div className="sm:hidden flex relative z-10">
         {session?.user ? (
           <div className="flex">
             <Image
@@ -86,7 +86,7 @@ const Nav = () => {
             />
             {toggleDropdown && (
               <div className="dropdown ">
-                <Link
+                {/* <Link
                   href="/"
                   className="dropdown_link outline_btn"
                   onClick={() => setToggleDropdown(false)}
@@ -100,7 +100,7 @@ const Nav = () => {
                   onClick={() => setToggleDropdown(false)}
                 >
                   All Employees
-                </Link>
+                </Link> */}
 
                 <button
                   type="button"
@@ -130,7 +130,7 @@ const Nav = () => {
               ))}
           </>
         )}
-      </div> */}
+      </div>
     </nav>
   );
 };

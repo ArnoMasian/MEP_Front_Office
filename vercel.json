@@ -1,7 +1,7 @@
 {
   "crons": [
     {
-      "path": "/api/updateOffDays",
+      "path": "/api/cron",
       "schedule": "* * * * *"
     }
   ]

@@ -1,6 +1,25 @@
 import Employee from "@models/employee";
 import { connectToDB } from "@utils/database";
-import cron from "node-cron";
+
+const updateOffDays = async () => {
+  try {
+    await connectToDB();
+
+    const count = await Employee.countDocuments();
+
+    if (count > 0) {
+      await Employee.updateMany({}, { $inc: { off: 1 } });
+
+      console.log("Off days updated successfully");
+    } else {
+      console.log("No employees in the database, skipping off days update");
+    }
+  } catch (error) {
+    console.error("Error updating the database:", error);
+  }
+};
+
+setInterval(updateOffDays, 7 * 24 * 60 * 60 * 1000);
 
 export const GET = async (request, { params }) => {
   try {

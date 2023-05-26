@@ -1,5 +1,5 @@
-import { connectToDB } from "@utils/database";
 import Employee from "@models/employee";
+import { connectToDB } from "@utils/database";
 
 export default async (req, res) => {
   try {
@@ -10,8 +10,8 @@ export default async (req, res) => {
     if (count > 0) {
       await Employee.updateMany({}, { $inc: { off: 1 } });
 
-      console.log("off days updated successfully");
-      res.status(200).send("off days updated successfully");
+      console.log("Off days updated successfully");
+      res.status(200).send("Off days updated successfully");
     } else {
       console.log("No employees in the database, skipping off days update");
       res
@@ -20,6 +20,6 @@ export default async (req, res) => {
     }
   } catch (error) {
     console.error("Error updating the database:", error);
-    res.status(500).send("Error updating the database");
+    res.status(500).send("Error updating the database: " + error);
   }
 };

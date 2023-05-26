@@ -3,11 +3,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import {
+  signIn,
+  signOut,
+  useSession,
+  getProviders,
+  session as nextAuthSession,
+} from "next-auth/react";
 
 const Nav = () => {
-  const { data: session, status } = useSession();
-  const loading = status === "loading";
+  const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -21,7 +26,17 @@ const Nav = () => {
     setUpProviders();
   }, []);
 
-  if (loading) return null;
+  useEffect(() => {
+    const handleSessionChange = () => {
+      // Force component to re-render
+      setToggleDropdown((prev) => !prev);
+    };
+
+    nextAuthSession.on("session", handleSessionChange);
+
+    // Clean up event listener
+    return () => nextAuthSession.off("session", handleSessionChange);
+  }, []);
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">

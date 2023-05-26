@@ -10,7 +10,7 @@ const updateOffDays = async () => {
     if (count > 0) {
       await Employee.updateMany({}, { $inc: { off: 1 } });
 
-      console.log("Off days updated successfully");
+      console.log("off days updated successfully");
     } else {
       console.log("No employees in the database, skipping off days update");
     }
@@ -19,27 +19,29 @@ const updateOffDays = async () => {
   }
 };
 
-setInterval(updateOffDays, 7 * 24 * 60 * 60 * 1000);
+const updateAnnualLeave = async () => {
+  try {
+    await connectToDB();
 
-// const updateAnnualLeave = async () => {
-//   try {
-//     await connectToDB();
+    const count = await Employee.countDocuments();
 
-//     const count = await Employee.countDocuments();
+    if (count > 0) {
+      await Employee.updateMany({}, { $inc: { annualLeave: 1 } });
 
-//     if (count > 0) {
-//       await Employee.updateMany({}, { $inc: { annual: 2.5 } });
+      console.log("Annual leave updated successfully");
+    } else {
+      console.log("No employees in the database, skipping annual leave update");
+    }
+  } catch (error) {
+    console.error("Error updating the database:", error);
+  }
+};
 
-//       console.log("Annual leave updated successfully");
-//     } else {
-//       console.log("No employees in the database, skipping annual leave update");
-//     }
-//   } catch (error) {
-//     console.error("Error updating the database:", error);
-//   }
-// };
+// Schedule the "off" update to run every 10 seconds
+cron.schedule("*/10 * * * * *", updateOffDays);
 
-// setInterval(updateAnnualLeave, 30 * 24 * 60 * 60 * 1000);
+// Schedule the "annualLeave" update to run at 00:00 on the first day of every month
+cron.schedule("0 0 1 * *", updateAnnualLeave);
 
 export const GET = async (request, { params }) => {
   try {

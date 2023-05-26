@@ -2,38 +2,38 @@ import Employee from "@models/employee";
 import { connectToDB } from "@utils/database";
 
 // UPDATE OFF DAYS EVERY 7 DAYS
-const updateOffDays = async () => {
-  try {
-    await connectToDB();
+// const updateOffDays = async () => {
+//   try {
+//     await connectToDB();
 
-    // Update all employees by adding 1 to their "off" days
-    await Employee.updateMany({}, { $inc: { off: 1 } });
+//     // Update all employees by adding 1 to their "off" days
+//     await Employee.updateMany({}, { $inc: { off: 1 } });
 
-    console.log("Database updated successfully");
-  } catch (error) {
-    console.error("Error updating the database:", error);
-  }
-};
+//     console.log("Database updated successfully");
+//   } catch (error) {
+//     console.error("Error updating the database:", error);
+//   }
+// };
 
-// Schedule the update every 7 days
-setInterval(updateOffDays, 7 * 24 * 60 * 60 * 1000);
+// // Schedule the update every 7 days
+// setInterval(updateOffDays, 7 * 24 * 60 * 60 * 1000);
 
 // UPDATE ANNUAL LEAVE EVERY MONTH
-const updateAnnualLeave = async () => {
-  try {
-    await connectToDB();
+// const updateAnnualLeave = async () => {
+//   try {
+//     await connectToDB();
 
-    // Update all employees by adding 2.5 to their "annual" leave
-    await Employee.updateMany({}, { $inc: { annual: 2.5 } });
+//     // Update all employees by adding 2.5 to their "annual" leave
+//     await Employee.updateMany({}, { $inc: { annual: 2.5 } });
 
-    console.log("Database updated successfully");
-  } catch (error) {
-    console.error("Error updating the database:", error);
-  }
-};
+//     console.log("Database updated successfully");
+//   } catch (error) {
+//     console.error("Error updating the database:", error);
+//   }
+// };
 
-// Schedule the update every month
-setInterval(updateAnnualLeave, 30 * 24 * 60 * 60 * 1000);
+// // Schedule the update every month
+// setInterval(updateAnnualLeave, 30 * 24 * 60 * 60 * 1000);
 
 export const GET = async (request, { params }) => {
   try {

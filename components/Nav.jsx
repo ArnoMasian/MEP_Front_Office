@@ -3,13 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import {
-  signIn,
-  signOut,
-  useSession,
-  getProviders,
-  session as nextAuthSession,
-} from "next-auth/react";
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
   const { data: session } = useSession();
@@ -24,18 +18,6 @@ const Nav = () => {
       setProviders(response);
     };
     setUpProviders();
-  }, []);
-
-  useEffect(() => {
-    const handleSessionChange = () => {
-      // Force component to re-render
-      setToggleDropdown((prev) => !prev);
-    };
-
-    nextAuthSession.on("session", handleSessionChange);
-
-    // Clean up event listener
-    return () => nextAuthSession.off("session", handleSessionChange);
   }, []);
 
   return (

@@ -2,48 +2,6 @@ import Employee from "@models/employee";
 import { connectToDB } from "@utils/database";
 import cron from "node-cron";
 
-const updateOffDays = async () => {
-  try {
-    await connectToDB();
-
-    const count = await Employee.countDocuments();
-
-    if (count > 0) {
-      await Employee.updateMany({}, { $inc: { off: 1 } });
-
-      console.log("off days updated successfully");
-    } else {
-      console.log("No employees in the database, skipping off days update");
-    }
-  } catch (error) {
-    console.error("Error updating the database:", error);
-  }
-};
-
-const updateAnnualLeave = async () => {
-  try {
-    await connectToDB();
-
-    const count = await Employee.countDocuments();
-
-    if (count > 0) {
-      await Employee.updateMany({}, { $inc: { annualLeave: 1 } });
-
-      console.log("Annual leave updated successfully");
-    } else {
-      console.log("No employees in the database, skipping annual leave update");
-    }
-  } catch (error) {
-    console.error("Error updating the database:", error);
-  }
-};
-
-// Schedule the "off" update to run every 10 seconds
-cron.schedule("*/10 * * * * *", updateOffDays);
-
-// Schedule the "annualLeave" update to run at 00:00 on the first day of every month
-cron.schedule("0 0 1 * *", updateAnnualLeave);
-
 export const GET = async (request, { params }) => {
   try {
     await connectToDB();

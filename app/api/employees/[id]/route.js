@@ -21,25 +21,25 @@ const updateOffDays = async () => {
 
 setInterval(updateOffDays, 7 * 24 * 60 * 60 * 1000);
 
-const updateAnnualLeave = async () => {
-  try {
-    await connectToDB();
+// const updateAnnualLeave = async () => {
+//   try {
+//     await connectToDB();
 
-    const count = await Employee.countDocuments();
+//     const count = await Employee.countDocuments();
 
-    if (count > 0) {
-      await Employee.updateMany({}, { $inc: { annual: 2.5 } });
+//     if (count > 0) {
+//       await Employee.updateMany({}, { $inc: { annual: 2.5 } });
 
-      console.log("Annual leave updated successfully");
-    } else {
-      console.log("No employees in the database, skipping annual leave update");
-    }
-  } catch (error) {
-    console.error("Error updating the database:", error);
-  }
-};
+//       console.log("Annual leave updated successfully");
+//     } else {
+//       console.log("No employees in the database, skipping annual leave update");
+//     }
+//   } catch (error) {
+//     console.error("Error updating the database:", error);
+//   }
+// };
 
-setInterval(updateAnnualLeave, 30 * 24 * 60 * 60 * 1000);
+// setInterval(updateAnnualLeave, 30 * 24 * 60 * 60 * 1000);
 
 export const GET = async (request, { params }) => {
   try {

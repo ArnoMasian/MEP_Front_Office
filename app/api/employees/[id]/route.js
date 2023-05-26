@@ -10,7 +10,7 @@ const updateOffDays = async () => {
     if (count > 0) {
       await Employee.updateMany({}, { $inc: { off: 1 } });
 
-      console.log("off days updated successfully");
+      console.log("Off days updated successfully");
     } else {
       console.log("No employees in the database, skipping off days update");
     }
@@ -30,7 +30,7 @@ const updateAnnualLeave = async () => {
     if (count > 0) {
       await Employee.updateMany({}, { $inc: { annual: 2.5 } });
 
-      console.log("annual leave updated successfully");
+      console.log("Annual leave updated successfully");
     } else {
       console.log("No employees in the database, skipping annual leave update");
     }

@@ -1,39 +1,45 @@
 import Employee from "@models/employee";
 import { connectToDB } from "@utils/database";
 
-// UPDATE OFF DAYS EVERY 7 DAYS
-// const updateOffDays = async () => {
-//   try {
-//     await connectToDB();
+const updateOffDays = async () => {
+  try {
+    await connectToDB();
 
-//     // Update all employees by adding 1 to their "off" days
-//     await Employee.updateMany({}, { $inc: { off: 1 } });
+    const count = await Employee.countDocuments();
 
-//     console.log("Database updated successfully");
-//   } catch (error) {
-//     console.error("Error updating the database:", error);
-//   }
-// };
+    if (count > 0) {
+      await Employee.updateMany({}, { $inc: { off: 1 } });
 
-// // Schedule the update every 7 days
-// setInterval(updateOffDays, 7 * 24 * 60 * 60 * 1000);
+      console.log("off days updated successfully");
+    } else {
+      console.log("No employees in the database, skipping off days update");
+    }
+  } catch (error) {
+    console.error("Error updating the database:", error);
+  }
+};
 
-// UPDATE ANNUAL LEAVE EVERY MONTH
-// const updateAnnualLeave = async () => {
-//   try {
-//     await connectToDB();
+setInterval(updateOffDays, 7 * 24 * 60 * 60 * 1000);
 
-//     // Update all employees by adding 2.5 to their "annual" leave
-//     await Employee.updateMany({}, { $inc: { annual: 2.5 } });
+const updateAnnualLeave = async () => {
+  try {
+    await connectToDB();
 
-//     console.log("Database updated successfully");
-//   } catch (error) {
-//     console.error("Error updating the database:", error);
-//   }
-// };
+    const count = await Employee.countDocuments();
 
-// // Schedule the update every month
-// setInterval(updateAnnualLeave, 30 * 24 * 60 * 60 * 1000);
+    if (count > 0) {
+      await Employee.updateMany({}, { $inc: { annual: 2.5 } });
+
+      console.log("annual leave updated successfully");
+    } else {
+      console.log("No employees in the database, skipping annual leave update");
+    }
+  } catch (error) {
+    console.error("Error updating the database:", error);
+  }
+};
+
+setInterval(updateAnnualLeave, 30 * 24 * 60 * 60 * 1000);
 
 export const GET = async (request, { params }) => {
   try {

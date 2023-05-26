@@ -26,7 +26,7 @@ const handler = NextAuth({
       try {
         await connectToDB();
 
-        const allowedEmails = ["hnaisam@gmail.com"];
+        const allowedEmails = ["hnaisam@gmail.com", "adaaran004@gmail.com"];
         if (allowedEmails.includes(profile.email)) {
           // check if user already exists
           const userExists = await User.findOne({ email: profile.email });

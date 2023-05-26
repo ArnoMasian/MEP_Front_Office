@@ -5,14 +5,12 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
-import homeHoverImage from "/public/assets/icons/home_dark.png";
-
 const Nav = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const loading = status === "loading";
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
-  const [isHomeButtonHovered, setIsHomeButtonHovered] = useState(false);
 
   useEffect(() => {
     const setUpProviders = async () => {
@@ -22,6 +20,8 @@ const Nav = () => {
     };
     setUpProviders();
   }, []);
+
+  if (loading) return null;
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">

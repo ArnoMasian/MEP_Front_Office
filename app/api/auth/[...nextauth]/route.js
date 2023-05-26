@@ -51,27 +51,3 @@ const handler = NextAuth({
 });
 
 export { handler as GET, handler as POST };
-
-// if (profile.email == "hnaisam@gmail.com") {
-//   // check if user already exists
-//   const userExists = await User.findOne({ email: profile.email });
-
-//   // if not, create a new document and save user in MongoDB
-//   if (!userExists) {
-//     await User.create({
-//       email: profile.email,
-//       username: profile.name.replace(" ", "").toLowerCase(),
-//       image: profile.picture,
-//     });
-
-//////////////////////////////////////////////////
-
-// const userExists = await User.findOne({ email: profile.email });
-
-//         // if not, create a new document and save user in MongoDB
-//         if (!userExists) {
-//           await User.create({
-//             email: profile.email,
-//             username: profile.name.replace(" ", "").toLowerCase(),
-//             image: profile.picture,
-//           });

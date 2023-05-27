@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import LeaveUpdateModal from "@components/LeaveUpdateModal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Home = () => {
   const { data: session } = useSession();

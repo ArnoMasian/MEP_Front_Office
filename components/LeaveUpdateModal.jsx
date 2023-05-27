@@ -1,6 +1,3 @@
-// ConfirmModal.jsx
-import React from "react";
-
 const LeaveUpdateModal = ({ operation, onConfirm, onCancel }) => {
   return (
     <div
@@ -37,16 +34,20 @@ const LeaveUpdateModal = ({ operation, onConfirm, onCancel }) => {
             </div>
           </div>
 
-          <div className="mt-5 sm:mt-4 flex justify-center sm:justify-end items-center sm:space-x-0">
+          <div className="mt-5 sm:mt-4 flex flex-col md:flex-row justify-center md:justify-end items-center sm:space-x-0">
+            <button
+              type="button"
+              onClick={onConfirm}
+              className="update2_btn w-full md:w-auto md:mb-0 mb-1 h-10 md:mr-2"
+            >
+              Yes
+            </button>
             <button
               type="button"
               onClick={onCancel}
-              className="cancel_btn mr-4"
+              className="cancel2_btn w-full md:w-auto sm:mt-0 mt-1 h-10"
             >
               No
-            </button>
-            <button type="button" onClick={onConfirm} className="update2_btn">
-              Yes
             </button>
           </div>
         </div>

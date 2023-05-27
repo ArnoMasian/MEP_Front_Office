@@ -114,15 +114,19 @@
 }
 
 .delete_btn {
-  @apply rounded-lg border border-red-500 bg-red-600 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center w-[80px];
+  @apply rounded-lg border border-red-500 bg-red-600 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
 
 .cancel_btn {
   @apply rounded-lg border border-gray-400 bg-gray-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center w-[80px];
 }
 
+.cancel2_btn {
+  @apply rounded-lg border border-gray-400 bg-gray-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center w-full;
+}
+
 .update2_btn {
-  @apply rounded-lg border border-green-500 bg-green-600 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center w-[80px];
+  @apply rounded-lg border border-green-500 bg-green-600 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center w-full;
 }
 
 .head_text {

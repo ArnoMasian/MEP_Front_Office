@@ -12,12 +12,12 @@ const Home = () => {
   const [successMessage, setSuccessMessage] = useState(null);
 
   const handleOffUpdate = () => {
-    setOperation("ALL OFF DAYS");
+    setOperation("OFF DAYS");
     setModalOpen(true);
   };
 
   const handleAnnualUpdate = () => {
-    setOperation("ALL ANNUAL LEAVE");
+    setOperation("ANNUAL LEAVE");
     setModalOpen(true);
   };
 
@@ -26,9 +26,9 @@ const Home = () => {
     try {
       let response;
 
-      if (operation === "ALL OFF DAYS") {
+      if (operation === "OFF DAYS") {
         response = await fetch("/api/updateOffDays", { method: "POST" });
-      } else if (operation === "ALL ANNUAL LEAVE") {
+      } else if (operation === "ANNUAL LEAVE") {
         response = await fetch("/api/updateAnnualDays", { method: "POST" });
       }
 
@@ -58,7 +58,7 @@ const Home = () => {
       {session?.user ? (
         <div className="flex flex-center justify-center items-center gap-3">
           <button type="button" onClick={handleOffUpdate} className="blue_btn">
-            <p className="font-satoshi font-medium">UPDATE OFF DAYS</p>
+            <p className="font-satoshi font-medium">UPDATE OFF</p>
           </button>
 
           <button
@@ -66,7 +66,7 @@ const Home = () => {
             onClick={handleAnnualUpdate}
             className="blue_btn"
           >
-            <p className="font-satoshi font-medium">UPDATE ANNUAL LEAVE</p>
+            <p className="font-satoshi font-medium">UPDATE ANNUAL</p>
           </button>
         </div>
       ) : (
@@ -81,7 +81,7 @@ const Home = () => {
       )}
 
       {successMessage && (
-        <div className="border-2 border-green-400 flex justify-center items-center mt-10 glassmorphism w-[400px] mx-auto">
+        <div className="border-2 border-green-400 flex justify-center items-center mt-10 glassmorphism w-[350px] mx-auto">
           <div className="alert alert-success text-center font-satoshi font-semibold text-green-600">
             {successMessage}
           </div>

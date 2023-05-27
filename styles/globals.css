@@ -88,8 +88,13 @@
 .outline_btn {
   @apply rounded-lg border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
+
 .main_btn {
   @apply rounded-lg border border-black bg-transparent py-2 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+}
+
+.main2_btn {
+  @apply rounded-lg border border-green-700 bg-green-600 py-2 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
 
 .orange_btn {
@@ -114,6 +119,10 @@
 
 .cancel_btn {
   @apply rounded-lg border border-gray-400 bg-gray-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center w-[80px];
+}
+
+.update2_btn {
+  @apply rounded-lg border border-green-500 bg-green-600 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center w-[80px];
 }
 
 .head_text {

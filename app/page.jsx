@@ -1,15 +1,92 @@
 "use client";
 
+import { useSession } from "next-auth/react";
+import LeaveUpdateModal from "@components/LeaveUpdateModal";
+import { useEffect, useState } from "react";
+
 const Home = () => {
+  const { data: session } = useSession();
+
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [operation, setOperation] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+
+  const handleOffUpdate = () => {
+    setOperation("ALL OFF DAYS");
+    setModalOpen(true);
+  };
+
+  const handleAnnualUpdate = () => {
+    setOperation("ALL ANNUAL LEAVE");
+    setModalOpen(true);
+  };
+
+  const confirmUpdate = async () => {
+    setModalOpen(false);
+    try {
+      let response;
+
+      if (operation === "ALL OFF DAYS") {
+        response = await fetch("/api/updateOffDays", { method: "POST" });
+      } else if (operation === "ALL ANNUAL LEAVE") {
+        response = await fetch("/api/updateAnnualDays", { method: "POST" });
+      }
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const message = await response.json();
+      console.log(message);
+      setSuccessMessage(`Successfully updated ${operation}`);
+      setTimeout(() => setSuccessMessage(null), 3000);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const cancelUpdate = () => {
+    setModalOpen(false);
+  };
+
   return (
     <section className="w-full h-screen flex flex-col">
-      <h1 className="head_text2 text-center orange_gradient mb-10">
+      <h1 className="head_text2 text-center orange_gradient mb-20">
         MEP FRONT OFFICE
       </h1>
 
-      <button type="button" onClick={() => {}} className="main_btn">
-        UPDATE
-      </button>
+      {session?.user ? (
+        <div className="flex flex-center justify-center items-center gap-3">
+          <button type="button" onClick={handleOffUpdate} className="blue_btn">
+            <p className="font-satoshi font-medium">UPDATE OFF DAYS</p>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleAnnualUpdate}
+            className="blue_btn"
+          >
+            <p className="font-satoshi font-medium">UPDATE ANNUAL LEAVE</p>
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
+      {isModalOpen && (
+        <LeaveUpdateModal
+          operation={operation}
+          onConfirm={confirmUpdate}
+          onCancel={cancelUpdate}
+        />
+      )}
+
+      {successMessage && (
+        <div className="border-2 border-green-400 flex justify-center items-center mt-10 glassmorphism w-[400px] mx-auto">
+          <div className="alert alert-success text-center font-satoshi font-semibold text-green-600">
+            {successMessage}
+          </div>
+        </div>
+      )}
     </section>
   );
 };

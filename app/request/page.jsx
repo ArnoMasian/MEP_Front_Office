@@ -34,7 +34,7 @@ const AllRequests = () => {
           </div>
         </div>
       </div>
-      {/* Don't forget to handle the scenario where there are no requests */}
+
       {requests.length === 0 && <p>No requests.</p>}
     </div>
   );

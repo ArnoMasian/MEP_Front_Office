@@ -4,7 +4,7 @@ const ConfirmModal = ({
   isOpen,
   onConfirm,
   onCancel,
-  actionButtonLabel,
+  actionButtonLabel = "Delete",
   isApprove = false,
   children,
 }) => {

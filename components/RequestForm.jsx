@@ -1,9 +1,8 @@
 import Link from "next/link";
-
 import { useContext } from "react";
+import { motion } from "framer-motion";
 
 import classes from "@styles/loader.module.css";
-
 import { ModalContext } from "@app/ModalContext";
 
 const RequestForm = ({
@@ -24,7 +23,11 @@ const RequestForm = ({
         <span className="blue_gradient">{type} for Leave</span>{" "}
       </h1>
 
-      <form
+      <motion.form
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.4 }}
         onSubmit={handleSubmit}
         className="mt-10 mb-10 w-full max-w-2xl flex flex-col gap-7 galssmorphism "
       >
@@ -201,7 +204,7 @@ const RequestForm = ({
             {submitting ? `${type}...` : type}
           </button>
         </div>
-      </form>
+      </motion.form>
     </section>
   );
 };

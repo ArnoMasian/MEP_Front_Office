@@ -1,10 +1,10 @@
 "use client";
 
+import { useSession } from "next-auth/react";
+
 import React from "react";
 import Link from "next/link";
 import Feed from "@components/Feed";
-
-import { useSession } from "next-auth/react";
 
 const AllEmployees = () => {
   const { data: session } = useSession();

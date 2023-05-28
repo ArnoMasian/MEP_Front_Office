@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import { ModalContext } from "../app/ModalContext";
 
@@ -62,7 +63,10 @@ const EmployeeCard = ({ employees }) => {
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.3 }}
       onClick={session?.user ? handleCardClick : handleNameClick}
       className={`prompt_card ${
         expanded
@@ -85,7 +89,10 @@ const EmployeeCard = ({ employees }) => {
       </div>
       {expanded && session?.user ? (
         <div className="flex gap-1 justify-between">
-          <div
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
             className={`relative flex items-center justify-center ${
               isUpdateButtonHovered
                 ? "bg-gradient-to-r from-blue-500 to-cyan-400 w-20"
@@ -112,9 +119,12 @@ const EmployeeCard = ({ employees }) => {
             >
               Update
             </span>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
             className={`relative flex items-center justify-center ${
               isRequestButtonHovered
                 ? "bg-gradient-to-r from-orange-500 to-yellow-400 w-20"
@@ -141,9 +151,12 @@ const EmployeeCard = ({ employees }) => {
             >
               Request
             </span>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
             className={`relative flex items-center justify-center ${
               isDeleteButtonHovered
                 ? "bg-gradient-to-r from-red-500 to-pink-400 w-20"
@@ -170,12 +183,12 @@ const EmployeeCard = ({ employees }) => {
             >
               Delete
             </span>
-          </div>
+          </motion.div>
         </div>
       ) : (
         <div></div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

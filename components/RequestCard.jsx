@@ -40,21 +40,30 @@ const RequestCard = ({ request }) => {
           console.log(error);
         }
       },
+      actionButtonLabel: "Reject",
+      isApprove: false,
     });
   };
 
   const approveRequest = async () => {
-    try {
-      await fetch(`/api/requests/approve/${request._id.toString()}`, {
-        method: "PUT",
-      });
+    handleModalOpen({
+      text: "Are you sure you want to approve this leave request?",
+      onConfirm: async () => {
+        try {
+          await fetch(`/api/requests/approve/${request._id.toString()}`, {
+            method: "PUT",
+          });
 
-      setIsApproved(true);
-      setIsRejected(false);
-      location.reload();
-    } catch (error) {
-      console.log(error);
-    }
+          setIsApproved(true);
+          setIsRejected(false);
+          location.reload();
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      actionButtonLabel: "Approve",
+      isApprove: true,
+    });
   };
 
   useEffect(() => {
@@ -120,7 +129,7 @@ const RequestCard = ({ request }) => {
         {session?.user ? (
           <div className="flex justify-between">
             <div
-              className="update_btn cursor-pointer mr-5"
+              className="update2_btn cursor-pointer"
               onClick={approveRequest}
               style={{ display: isApproved || isRejected ? "none" : "block" }}
             >

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 import EmployeeCard from "./EmployeeCard";
 import classes from "@styles/loader.module.css";
@@ -46,7 +47,12 @@ const Feed = () => {
 
   return (
     <>
-      <div className="w-full sm:max-w-md mx-auto p-6 space-y-8">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="w-full sm:max-w-md mx-auto p-6 space-y-8"
+      >
         <div className="relative">
           <input
             type="text"
@@ -85,7 +91,7 @@ const Feed = () => {
             </option>
           </select>
         </div>
-      </div>
+      </motion.div>
 
       <section className="feed">
         {loading ? (

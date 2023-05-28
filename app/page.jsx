@@ -1,8 +1,11 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import LeaveUpdateModal from "@components/LeaveUpdateModal";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+
+import LeaveUpdateModal from "@components/LeaveUpdateModal";
 
 const Home = () => {
   const { data: session } = useSession();
@@ -51,41 +54,64 @@ const Home = () => {
 
   return (
     <section className="w-full h-screen flex flex-col">
-      <h1 className="head_text2 text-center orange_gradient mb-20">
+      <motion.h1
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="head_text2 text-center orange_gradient mb-20"
+      >
         MEP FRONT OFFICE
-      </h1>
+      </motion.h1>
 
       {session?.user ? (
         <div className="flex flex-center justify-center items-center gap-3">
-          <button type="button" onClick={handleOffUpdate} className="blue_btn">
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            type="button"
+            onClick={handleOffUpdate}
+            className="blue_btn"
+          >
             <p className="font-satoshi font-medium">UPDATE OFF</p>
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
             type="button"
             onClick={handleAnnualUpdate}
             className="blue_btn"
           >
             <p className="font-satoshi font-medium">UPDATE ANNUAL</p>
-          </button>
+          </motion.button>
         </div>
       ) : (
         <></>
       )}
-      {isModalOpen && (
-        <LeaveUpdateModal
-          operation={operation}
-          onConfirm={confirmUpdate}
-          onCancel={cancelUpdate}
-        />
-      )}
+      <AnimatePresence>
+        {isModalOpen && (
+          <LeaveUpdateModal
+            operation={operation}
+            onConfirm={confirmUpdate}
+            onCancel={cancelUpdate}
+          />
+        )}
+      </AnimatePresence>
 
       {successMessage && (
-        <div className="border-2 border-green-400 flex justify-center items-center mt-10 glassmorphism w-[350px] mx-auto">
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
+          transition={{ duration: 0.3 }}
+          className="border-2 border-green-400 flex justify-center items-center mt-10 glassmorphism w-[350px] mx-auto"
+        >
           <div className="alert alert-success text-center font-satoshi font-semibold text-green-600">
             {successMessage}
           </div>
-        </div>
+        </motion.div>
       )}
     </section>
   );

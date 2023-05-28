@@ -1,6 +1,6 @@
 import Link from "next/link";
-
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const AddForm = ({ type, employee, setEmployee, submitting, handleSubmit }) => {
   const [formattedDate, setFormattedDate] = useState("");
@@ -25,7 +25,11 @@ const AddForm = ({ type, employee, setEmployee, submitting, handleSubmit }) => {
         <span className="blue_gradient">{type} Employee</span>{" "}
       </h1>
 
-      <form
+      <motion.form
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.4 }}
         onSubmit={handleSubmit}
         className="mt-10 mb-10 w-full max-w-2xl flex flex-col gap-7 galssmorphism "
       >
@@ -57,7 +61,7 @@ const AddForm = ({ type, employee, setEmployee, submitting, handleSubmit }) => {
             <option value=""> Select Designation </option>
             <option value="Supervisor">Supervisor</option>
             <option value="Receptionist">Receptionist</option>
-            <option value="Bell Attandent">Bell Attandent</option>
+            <option value="Bell Attendant">Bell Attendant</option>
             <option value="Kids club attendant">Kids Club Attendant</option>
             <option value="Gym Assistant">Gym Assistant</option>
             <option value="Back office assistant">Back Office Assistant</option>
@@ -187,7 +191,7 @@ const AddForm = ({ type, employee, setEmployee, submitting, handleSubmit }) => {
             {submitting ? `${type}...` : type}
           </button>
         </div>
-      </form>
+      </motion.form>
     </section>
   );
 };

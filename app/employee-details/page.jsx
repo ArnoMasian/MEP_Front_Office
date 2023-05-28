@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
 
 import classes from "@styles/loader.module.css";
 import RequestCard from "@components/RequestCard";
@@ -55,7 +56,12 @@ const UpdateEmployee = () => {
             <div className={classes.customLoader__dot}></div>
           </div>
         ) : (
-          <div className="details_card">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            className="details_card"
+          >
             {/* <Card /> */}
             <h1 className="head_text text-center text-orange-500">
               {employee ? employee.name : ""}
@@ -133,7 +139,7 @@ const UpdateEmployee = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
       {loading ? (
@@ -143,13 +149,18 @@ const UpdateEmployee = () => {
           <div className="head_text text-center mb-8 text-blue-500">
             Leave History
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-5">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-5"
+          >
             {employee &&
               employee.requests &&
               employee.requests.map((request) => (
                 <RequestCard key={request._id} request={request} />
               ))}
-          </div>
+          </motion.div>
         </div>
       ) : (
         <div></div>

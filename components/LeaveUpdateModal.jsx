@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const LeaveUpdateModal = ({ operation, onConfirm, onCancel }) => {
   return (
     <div
@@ -7,17 +9,27 @@ const LeaveUpdateModal = ({ operation, onConfirm, onCancel }) => {
       aria-modal="true"
     >
       <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <div
-          className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 bg-gray-600 bg-opacity-75 transition-opacity"
           aria-hidden="true"
-        ></div>
+        ></motion.div>
         <span
           className="hidden sm:inline-block sm:align-middle sm:h-screen"
           aria-hidden="true"
         >
           &#8203;
         </span>
-        <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
+        >
           <div className="sm:flex sm:items-start">
             <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
               <h3
@@ -50,7 +62,7 @@ const LeaveUpdateModal = ({ operation, onConfirm, onCancel }) => {
               No
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

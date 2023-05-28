@@ -29,6 +29,8 @@ const ModalProvider = ({ children }) => {
               handleModalClose();
             }}
             onCancel={handleModalClose}
+            actionButtonLabel={modalContent.actionButtonLabel}
+            isApprove={modalContent.actionButtonLabel === "Approve"} // Add this line
           >
             {modalContent.text}
           </ConfirmModal>,
